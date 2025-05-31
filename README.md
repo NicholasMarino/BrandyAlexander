@@ -1,4 +1,4 @@
-# Cometproduction
+# Brandy Alexander
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
 
@@ -22,8 +22,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Deploy
 
 ```
-ng deploy --base-href /cometproduction/
-ng deploy --cname=thecometproduction.com
+ng deploy --cname=brandyalexander.com
 ```
 
 ## Running unit tests

@@ -1,0 +1,114 @@
+<div class="uk-section uk-margin-top">
+  <div class="uk-container">
+    <p class="uk-text" *ngIf="SHOWRUNS.length == 0">
+      There are currently no scheduled showruns of Comet. If you'd like to produce a run, please <a routerLink="../contact">contact us</a>.
+    </p>
+
+    <div class="uk-grid" *ngFor="let showrun of SHOWRUNS">
+      <div class="uk-width-1-1 uk-width-2-5@s">
+        <div *ngIf="showrun.image; then showrunImage; else noShowrunImage"></div>
+        <ng-template #showrunImage>
+          <a href="{{showrun.ticketLink}}" target="_blank">
+            <img src="{{showrun.image}}" alt="{{showrun.address.name}}" width="300" height="300">
+          </a>
+        </ng-template>
+        <ng-template #noShowrunImage>
+          <a href="{{showrun.ticketLink}}" target="_blank">
+            <img src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" width="300" height="300">
+          </a>
+        </ng-template>
+      </div>
+      <div class="uk-width-1-1 uk-width-3-5@s">
+        <h3 class="uk-card-title uk-margin-remove-bottom">{{showrun.title}} at {{showrun.address.name}}</h3>
+        <p class="uk-text-meta uk-margin-remove-top" *ngIf="showrun.address.line2">
+          <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
+            {{showrun.address.line1}} {{showrun.address.line2}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
+          </a>
+        </p>
+
+        <p class="uk-text-meta uk-margin-remove-top" *ngIf="!showrun.address.line2">
+          <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
+            {{showrun.address.line1}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
+          </a>
+        </p>
+
+        <p class="uk-text">{{showrun.description}}</p>
+
+        <div *ngIf="showrun.ticketLink; then ticketsOpen; else ticketsClosed"></div>
+        <ng-template #ticketsOpen>
+          <ul class="uk-list">
+            <li *ngFor="let showtime of showrun.showtimes">
+              {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
+            </li>
+          </ul>
+
+          <a class="uk-button uk-button-primary" type="button" href="{{showrun.ticketLink}}" target="_blank">
+            Tickets
+          </a>
+        </ng-template>
+        <ng-template #ticketsClosed>
+          <button class="uk-button uk-button-primary" disabled type="button">
+            Tickets Coming Soon
+          </button>
+        </ng-template>
+      </div>
+    </div>
+
+    <!--
+    <div class="uk-card uk-card-default uk-grid" uk-grid *ngFor="let showrun of SHOWRUNS">
+      <div class="uk-card-media-left uk-cover-container uk-width-2-5@s">
+        <div *ngIf="showrun.image; then showrunImage; else noShowrunImage"></div>
+        <ng-template #showrunImage>
+          <a href="{{showrun.ticketLink}}" target="_blank">
+            <img src="{{showrun.image}}" alt="{{showrun.address.name}}" uk-cover>
+          </a>
+          <canvas width="400" height="400"></canvas>
+        </ng-template>
+        <ng-template #noShowrunImage>
+          <a href="{{showrun.ticketLink}}" target="_blank">
+            <img src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" uk-cover>
+          </a>
+          <canvas width="400" height="400"></canvas>
+        </ng-template>
+      </div>
+
+      <div class="uk-width-3-5@s">
+        <div class="uk-card-body">
+          <h3 class="uk-card-title uk-margin-remove-bottom">{{showrun.title}} at {{showrun.address.name}}</h3>
+          <p class="uk-text-meta uk-margin-remove-top" *ngIf="showrun.address.line2">
+            <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
+              {{showrun.address.line1}} {{showrun.address.line2}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
+            </a>
+          </p>
+
+          <p class="uk-text-meta uk-margin-remove-top" *ngIf="!showrun.address.line2">
+            <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
+              {{showrun.address.line1}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
+            </a>
+          </p>
+
+          <p class="uk-text">{{showrun.description}}</p>
+
+          <div *ngIf="showrun.ticketLink; then ticketsOpen; else ticketsClosed"></div>
+          <ng-template #ticketsOpen>
+            <ul class="uk-list">
+              <li *ngFor="let showtime of showrun.showtimes">
+                {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
+              </li>
+            </ul>
+
+            <a class="uk-button uk-button-primary" type="button" href="{{showrun.ticketLink}}" target="_blank">
+              Tickets
+            </a>
+          </ng-template>
+          <ng-template #ticketsClosed>
+            <button class="uk-button uk-button-primary" disabled type="button">
+              Tickets Coming Soon
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</div>

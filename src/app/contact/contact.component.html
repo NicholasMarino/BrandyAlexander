@@ -1,12 +1,11 @@
-<div class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
-     style="background-image: url('assets/images/DSC01365.JPG'); background-position: 80% 80%; height: 650px">
+<div class="uk-margin-top uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
+     style="background-image: url('assets/images/brandy_alexander_paper_machete.jpg'); background-position: 50% 10%; height: 600px">
 </div>
 
 <div class="uk-section">
   <div class="uk-container">
+    <h1 class="uk-article-title">Contact Us</h1>
     <article class="uk-article">
-      <h1 class="uk-article-title">Contact</h1>
-
       <form class="uk-grid-small" uk-grid (ngSubmit)="onSubmit()" #contactForm="ngForm">
         <div class="uk-width-1-1 uk-width-1-2@m">
           <input class="uk-input"
@@ -31,7 +30,7 @@
         <div class="uk-width-1-1">
           <textarea class="uk-textarea"
                     rows="4"
-                    placeholder="Leave me a message!"
+                    placeholder="Leave us a message!"
                     name="comments"
                     required
                     [(ngModel)]="model.comments"

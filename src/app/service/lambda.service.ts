@@ -11,7 +11,7 @@ export class LambdaService {
     var httpOptions = {
       headers: new HttpHeaders({}),
       params: new HttpParams()
-        .set("name", "Comet Production 2024 Message " + model.name)
+        .set("name", "Brandy Alexander Message: " + model.name)
         .set("email", model.email)
         .set("comments", model.comments)
     }

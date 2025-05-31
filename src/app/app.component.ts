@@ -20,7 +20,7 @@ export class AppComponent {
   copyrightYears: string;
 
   constructor() {
-    let startYear = 2024;
+    let startYear = 2025;
     let currentYear = new Date().getFullYear();
 
     if (startYear == currentYear) {

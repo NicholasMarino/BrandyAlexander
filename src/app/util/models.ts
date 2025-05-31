@@ -5,20 +5,13 @@ export interface Address {
   city: string,
   state: string,
   zip: string,
-  image: string,
-  link: string,
-}
-
-export interface Person {
-  firstName: string,
-  lastName: string,
-  roles: string[],
-  image: string
+  googleMapsLink: string,
 }
 
 export interface Showrun {
   title: string,
   address: Address,
+  image: string | undefined,
   ticketLink: string,
   showtimes: Showtime[],
   description: string,
@@ -27,24 +20,4 @@ export interface Showrun {
 export interface Showtime {
   date: Date,
   time: string,
-}
-
-export interface AuctionItem {
-  id: string,
-  title: string,
-  description: string,
-  descriptionMore: string | undefined,
-  startingBid: number,
-  currentBid: number | undefined,
-  bidIncrement: number,
-  images: string[],
-  chicagoOnly: boolean,
-}
-
-export interface DonorTier {
-  title: string,
-  image: string,
-  titleClass: string,
-  membersClass: string,
-  members: string[],
 }

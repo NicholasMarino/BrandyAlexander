@@ -1,21 +1,23 @@
-<div class="uk-section uk-margin-top">
+<div class="uk-section uk-margin-large-top">
   <div class="uk-container">
     <p class="uk-text" *ngIf="SHOWRUNS.length == 0">
-      There are currently no scheduled showruns of Comet. If you'd like to produce a run, please <a routerLink="../contact">contact us</a>.
+      There are currently no scheduled showruns of Brandy Alexander. If you'd like to produce a run, please <a routerLink="../contact">contact us</a>.
     </p>
 
     <div class="uk-grid" *ngFor="let showrun of SHOWRUNS">
-      <div class="uk-width-1-1 uk-width-2-5@s">
+      <div class="uk-width-1-1 uk-width-2-5@s showrun-tile">
         <div *ngIf="showrun.image; then showrunImage; else noShowrunImage"></div>
         <ng-template #showrunImage>
           <a href="{{showrun.ticketLink}}" target="_blank">
-            <img src="{{showrun.image}}" alt="{{showrun.address.name}}" width="300" height="300">
+            <img class="image-center" src="{{showrun.image}}" alt="{{showrun.address.name}}" width="300" height="300">
           </a>
         </ng-template>
         <ng-template #noShowrunImage>
-          <a href="{{showrun.ticketLink}}" target="_blank">
-            <img src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" width="300" height="300">
-          </a>
+          <div class="uk-card uk-card-default uk-card-body">
+            <a href="{{showrun.ticketLink}}" target="_blank">
+              <img class="image-center" src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" width="300" height="300">
+            </a>
+          </div>
         </ng-template>
       </div>
       <div class="uk-width-1-1 uk-width-3-5@s">

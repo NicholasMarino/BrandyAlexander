@@ -22,6 +22,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Deploy
 
 ```
+ng deploy --base-href /brandyalexander/
 ng deploy --cname=brandyalexander.com
 ```
 

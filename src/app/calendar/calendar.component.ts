@@ -41,7 +41,7 @@ export class CalendarComponent {
 
   SHOWRUNS: Showrun[] = [
     {
-      title: "Montly Show on 1st Wednesday",
+      title: "Monthly Show on 1st Wednesday",
       address: this.PLAYGROUND_THEATER_ADDRESS,
       image: undefined,
       ticketLink: '',
@@ -51,7 +51,7 @@ export class CalendarComponent {
       description: "A monthly variety show, hosted by Brandy Alexander!",
     },
     {
-      title: "Montly Show on last Wednesday",
+      title: "Monthly Show on last Wednesday",
       address: this.PLAYGROUND_THEATER_ADDRESS,
       image: undefined,
       ticketLink: 'here',

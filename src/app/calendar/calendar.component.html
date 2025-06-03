@@ -1,80 +1,26 @@
-<div class="uk-section uk-margin-large-top">
+<div class="uk-section">
   <div class="uk-container">
-    <p class="uk-text" *ngIf="SHOWRUNS.length == 0">
+    <p class="uk-text" *ngIf="FILTERED_SHOWRUNS.length == 0">
       There are currently no scheduled showruns of Brandy Alexander. If you'd like to produce a run, please <a routerLink="../contact">contact us</a>.
     </p>
 
-    <div class="uk-grid" *ngFor="let showrun of SHOWRUNS">
-      <div class="uk-width-1-1 uk-width-2-5@s showrun-tile">
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngFor="let showrun of FILTERED_SHOWRUNS">
+      <div class="uk-card-media-left uk-cover-container">
+
+        <!-- If there is a specific "poster image" for this showrun, use it. Otherwise use the default "Brandy Alexandar Show" image -->
         <div *ngIf="showrun.image; then showrunImage; else noShowrunImage"></div>
         <ng-template #showrunImage>
-          <a href="{{showrun.ticketLink}}" target="_blank">
-            <img class="image-center" src="{{showrun.image}}" alt="{{showrun.address.name}}" width="300" height="300">
-          </a>
+          <div class="uk-card uk-card-default uk-card-body">
+            <img class="horizontal-center" src="{{showrun.image}}" alt="{{showrun.address.name}}" width="450" height="450">
+          </div>
         </ng-template>
         <ng-template #noShowrunImage>
-          <div class="uk-card uk-card-default uk-card-body">
-            <a href="{{showrun.ticketLink}}" target="_blank">
-              <img class="image-center" src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" width="300" height="300">
-            </a>
+          <div class="uk-card uk-card-default uk-card-body showrun-tile">
+            <img class="horizontal-center" src="assets/images/brandy_alexander_banner_1.png" alt="{{showrun.address.name}}" width="300" height="300">
           </div>
         </ng-template>
       </div>
-      <div class="uk-width-1-1 uk-width-3-5@s">
-        <h3 class="uk-card-title uk-margin-remove-bottom">{{showrun.title}} at {{showrun.address.name}}</h3>
-        <p class="uk-text-meta uk-margin-remove-top" *ngIf="showrun.address.line2">
-          <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
-            {{showrun.address.line1}} {{showrun.address.line2}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
-          </a>
-        </p>
-
-        <p class="uk-text-meta uk-margin-remove-top" *ngIf="!showrun.address.line2">
-          <a href="{{showrun.address.googleMapsLink}}" title="{{showrun.address.name}}" target="_blank">
-            {{showrun.address.line1}}, {{showrun.address.city}}, {{showrun.address.state}} {{showrun.address.zip}}
-          </a>
-        </p>
-
-        <p class="uk-text">{{showrun.description}}</p>
-
-        <div *ngIf="showrun.ticketLink; then ticketsOpen; else ticketsClosed"></div>
-        <ng-template #ticketsOpen>
-          <ul class="uk-list">
-            <li *ngFor="let showtime of showrun.showtimes">
-              {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
-            </li>
-          </ul>
-
-          <a class="uk-button uk-button-primary" type="button" href="{{showrun.ticketLink}}" target="_blank">
-            Tickets
-          </a>
-        </ng-template>
-        <ng-template #ticketsClosed>
-          <button class="uk-button uk-button-primary" disabled type="button">
-            Tickets Coming Soon
-          </button>
-        </ng-template>
-      </div>
-    </div>
-
-    <!--
-    <div class="uk-card uk-card-default uk-grid" uk-grid *ngFor="let showrun of SHOWRUNS">
-      <div class="uk-card-media-left uk-cover-container uk-width-2-5@s">
-        <div *ngIf="showrun.image; then showrunImage; else noShowrunImage"></div>
-        <ng-template #showrunImage>
-          <a href="{{showrun.ticketLink}}" target="_blank">
-            <img src="{{showrun.image}}" alt="{{showrun.address.name}}" uk-cover>
-          </a>
-          <canvas width="400" height="400"></canvas>
-        </ng-template>
-        <ng-template #noShowrunImage>
-          <a href="{{showrun.ticketLink}}" target="_blank">
-            <img src="assets/images/brandy_alexander_banner_2.png" alt="{{showrun.address.name}}" uk-cover>
-          </a>
-          <canvas width="400" height="400"></canvas>
-        </ng-template>
-      </div>
-
-      <div class="uk-width-3-5@s">
+      <div>
         <div class="uk-card-body">
           <h3 class="uk-card-title uk-margin-remove-bottom">{{showrun.title}} at {{showrun.address.name}}</h3>
           <p class="uk-text-meta uk-margin-remove-top" *ngIf="showrun.address.line2">
@@ -91,26 +37,29 @@
 
           <p class="uk-text">{{showrun.description}}</p>
 
+          <!-- Display the next N showtimes for this showrun -->
+          <ul class="uk-list">
+            <li *ngFor="let showtime of showrun.showtimes.slice(0, DISPLAY_N_SHOWTIMES_PER_SHOWRUN - 1)">
+              {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
+              <span class="uk-text-italic" *ngIf="showtime.featuring">ft. {{showtime.featuring}}</span>
+            </li>
+            <li *ngIf="showrun.showtimes.length > DISPLAY_N_SHOWTIMES_PER_SHOWRUN">And {{showrun.showtimes.length - DISPLAY_N_SHOWTIMES_PER_SHOWRUN}} more dates!</li>
+          </ul>
+
+          <!-- If a ticket link was provided, display it. Otherwise display a note that tickets are coming soon -->
           <div *ngIf="showrun.ticketLink; then ticketsOpen; else ticketsClosed"></div>
           <ng-template #ticketsOpen>
-            <ul class="uk-list">
-              <li *ngFor="let showtime of showrun.showtimes">
-                {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
-              </li>
-            </ul>
-
             <a class="uk-button uk-button-primary" type="button" href="{{showrun.ticketLink}}" target="_blank">
               Tickets
             </a>
           </ng-template>
           <ng-template #ticketsClosed>
-            <button class="uk-button uk-button-primary" disabled type="button">
+            <button class="uk-button uk-button-primary" type="button" disabled>
               Tickets Coming Soon
             </button>
           </ng-template>
         </div>
       </div>
     </div>
-    -->
   </div>
 </div>

@@ -31,6 +31,7 @@ export class ContactComponent {
   result: any | undefined = {};
 
   constructor(private lambdaService: LambdaService) {
+    // TODO: Would you rather have people just contact you on Instagram?
   }
 
   onSubmit() {

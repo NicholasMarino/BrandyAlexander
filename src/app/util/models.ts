@@ -12,7 +12,7 @@ export interface Showrun {
   title: string,
   address: Address,
   image: string | undefined,
-  ticketLink: string,
+  ticketLink: string | undefined,
   showtimes: Showtime[],
   description: string,
 }
@@ -20,4 +20,5 @@ export interface Showrun {
 export interface Showtime {
   date: Date,
   time: string,
+  featuring: string | undefined,
 }

@@ -39,17 +39,19 @@
   </nav>
 </div>
 
-<router-outlet></router-outlet>
+<div style="position: relative; top: 80px">
+  <router-outlet></router-outlet>
+</div>
 
-<div class="uk-section uk-section-xsmall">
+<div class="uk-section uk-section-xsmall" style="position: relative; top: 50px">
   <div class="uk-container">
-    <div class="uk-grid uk-child-width-1-2@s">
-      <div class="uk-text-left">
+    <div class="uk-clearfix">
+      <div class="uk-float-left">
         {{copyrightYears}} Brandy Alexander. All rights reserved.
       </div>
-      <div class="uk-text-right">
-        <a href="https://www.instagram.com/thebrandyalexandershow" target="_blank" uk-icon="icon: instagram; ratio: 1.5"></a>
+      <div class="uk-float-right">
         <a href="https://www.facebook.com/thebrandyalexandershow/" target="_blank" uk-icon="icon: facebook; ratio: 1.5"></a>
+        <a href="https://www.instagram.com/thebrandyalexandershow" target="_blank" uk-icon="icon: instagram; ratio: 1.5"></a>
       </div>
     </div>
   </div>

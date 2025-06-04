@@ -9,31 +9,21 @@
     </article>
 
     <div class="uk-margin-top uk-child-width-1-2@m" uk-grid uk-height-match="target: > div > .uk-card">
-      <div>
+      <div *ngFor="let castMember of CAST_MEMBERS">
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="assets/images/chris_iannucci.jpg" width="600" height="400" alt="">
+            <img [src]="castMember.image" width="600" height="400" alt="">
           </div>
           <div class="uk-card-body">
-            <h3 class="uk-card-title">Chris Iannucci</h3>
-            <p>TODO: Person description</p>
+            <h3 class="uk-card-title">{{castMember.name}}</h3>
+            <div [innerHTML]="castMember.description"></div>
           </div>
           <div class="uk-card-footer">
-            TODO: Social media?
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="uk-card uk-card-default">
-          <div class="uk-card-media-top">
-            <img src="assets/images/nicholas_marino.jpg" width="600" height="400" alt="">
-          </div>
-          <div class="uk-card-body">
-            <h3 class="uk-card-title">Nicholas Marino</h3>
-            <p>TODO: Person description</p>
-          </div>
-          <div class="uk-card-footer">
-            TODO: Social media?
+            <ul class="uk-iconnav">
+              <li *ngFor="let social of castMember.socials">
+                <a [href]="social.link" target="_blank"><span class="uk-margin-xsmall-right" attr.uk-icon="{{social.icon}}"></span> {{social.name}}</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

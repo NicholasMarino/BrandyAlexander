@@ -28,3 +28,10 @@ export interface Social {
   icon: string,
   link: string,
 }
+
+export interface CastMember {
+  name: string,
+  description: string,
+  image: string,
+  socials: Social[],
+}

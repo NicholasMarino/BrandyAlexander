@@ -2,11 +2,11 @@
   <div class="uk-container">
     <div class="uk-grid uk-child-width-1-2@s">
       <div>
-        <img class="horizontal-center" src="assets/images/brandy_alexander_banner_2.png" width="400px"/>
+        <img class="horizontal-center" src="assets/images/brandy_alexander_banner_2.png" width="350px"/>
       </div>
       <div class="uk-margin-auto uk-margin-auto-vertical">
         <p class="uk-text-lead">
-          Chicago's undisputed best sketch comedy duo, featuring Chris Iannucci and Nick Marino!
+          Chicago's undisputed best sketch comedy duo of Chris Iannucci and Nick Marino!
         </p>
         <p class="uk-text">Featured in:</p>
         <ul>
@@ -40,7 +40,7 @@
 
 <div class="uk-section">
   <div class="uk-container">
-    <div class="uk-grid uk-child-width-1-2@s uk-flex-center" uk-grid>
+    <div class="uk-grid uk-child-width-1-2@m uk-flex-center" uk-grid>
       <div>
         <!-- Generated from documentation here
         https://help.instagram.com/620154495870484?helpref=faq_content
@@ -50,12 +50,14 @@
       </div>
 
       <div>
-        <iframe src="https://www.youtube-nocookie.com/embed/l-ure21t-5s?playsinline=1&amp;rel=0&amp;controls=0&amp;loop=1"
-                width="1920"
-                height="1080"
-                allowfullscreen
-                uk-responsive
-                uk-video="autoplay: false; automute: true"></iframe>
+        <div class="uk-cover-container uk-margin-bottom" *ngFor="let link of YOUTUBE_VIDEO_LINKS">
+          <iframe [src]="link"
+                  width="1920"
+                  height="1080"
+                  allowfullscreen
+                  uk-responsive
+                  uk-video="autoplay: false; automute: true"></iframe>
+        </div>
       </div>
     </div>
   </div>

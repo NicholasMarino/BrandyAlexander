@@ -22,3 +22,9 @@ export interface Showtime {
   time: string,
   featuring: string | undefined,
 }
+
+export interface Social {
+  name: string,
+  icon: string,
+  link: string,
+}

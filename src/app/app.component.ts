@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-
+import { Social } from './util/models';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,19 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './app.component.less'
 })
 export class AppComponent {
+
+  SOCIALS: Social[] = [
+    {
+      name: "@thebrandyalexandershow",
+      icon: "facebook",
+      link: "https://www.facebook.com/thebrandyalexandershow"
+    },
+    {
+      name: "@thebrandyalexandershow",
+      icon: "instagram",
+      link: "https://www.instagram.com/thebrandyalexandershow"
+    }
+  ];
 
   copyrightYears: string;
 

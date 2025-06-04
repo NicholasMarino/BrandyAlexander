@@ -38,13 +38,14 @@
           <p class="uk-text">{{showrun.description}}</p>
 
           <!-- Display the next N showtimes for this showrun -->
-          <ul class="uk-list">
-            <li *ngFor="let showtime of showrun.showtimes.slice(0, DISPLAY_N_SHOWTIMES_PER_SHOWRUN - 1)">
-              {{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}
-              <span class="uk-text-italic" *ngIf="showtime.featuring">ft. {{showtime.featuring}}</span>
-            </li>
-            <li *ngIf="showrun.showtimes.length > DISPLAY_N_SHOWTIMES_PER_SHOWRUN">And {{showrun.showtimes.length - DISPLAY_N_SHOWTIMES_PER_SHOWRUN}} more dates!</li>
-          </ul>
+          <dl class="uk-description-list" *ngFor="let showtime of showrun.showtimes.slice(0, DISPLAY_N_SHOWTIMES_PER_SHOWRUN)">
+            <dt>{{showtime.date | date: 'EEE, MMM d'}} at {{showtime.time}}</dt>
+            <dd class="uk-text-small uk-text-italic" *ngIf="showtime.featuring">Featuring {{showtime.featuring}}</dd>
+          </dl>
+
+          <dl class="uk-description-list" *ngIf="showrun.showtimes.length > DISPLAY_N_SHOWTIMES_PER_SHOWRUN">
+            <dt>And {{showrun.showtimes.length - DISPLAY_N_SHOWTIMES_PER_SHOWRUN}} more dates!</dt>
+          </dl>
 
           <!-- If a ticket link was provided, display it. Otherwise display a note that tickets are coming soon -->
           <div *ngIf="showrun.ticketLink; then ticketsOpen; else ticketsClosed"></div>

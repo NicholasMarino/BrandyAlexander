@@ -18,11 +18,16 @@
           <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
-              <ul class="uk-nav uk-nav-primary uk-nav-left">
+              <ul class="uk-nav uk-nav-default uk-nav-left">
                 <li routerLinkActive="uk-active"><a routerLink="home">Home</a></li>
                 <li routerLinkActive="uk-active"><a routerLink="about">About</a></li>
                 <li routerLinkActive="uk-active"><a routerLink="calendar">Show Dates</a></li>
                 <li routerLinkActive="uk-active"><a routerLink="contact">Contact</a></li>
+
+                <li class="uk-nav-header">Social Media</li>
+                <li *ngFor="let social of SOCIALS">
+                  <a [href]="social.link" target="_blank"><span class="uk-margin-xsmall-right" attr.uk-icon="{{social.icon}}"></span> {{social.name}}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -32,6 +37,9 @@
             <li routerLinkActive="uk-active"><a routerLink="about">About</a></li>
             <li routerLinkActive="uk-active"><a routerLink="calendar">Show Dates</a></li>
             <li routerLinkActive="uk-active"><a routerLink="contact">Contact</a></li>
+            <li *ngFor="let social of SOCIALS">
+              <a [href]="social.link" target="_blank"><span class="uk-margin-xsmall-right" attr.uk-icon="{{social.icon}}"></span></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -46,13 +54,7 @@
 <div class="uk-section uk-section-xsmall" style="position: relative; top: 50px">
   <div class="uk-container">
     <div class="uk-clearfix">
-      <div class="uk-float-left">
-        {{copyrightYears}} Brandy Alexander. All rights reserved.
-      </div>
-      <div class="uk-float-right">
-        <a href="https://www.facebook.com/thebrandyalexandershow/" target="_blank" uk-icon="icon: facebook; ratio: 1.5"></a>
-        <a href="https://www.instagram.com/thebrandyalexandershow" target="_blank" uk-icon="icon: instagram; ratio: 1.5"></a>
-      </div>
+      <p class="uk-text">{{copyrightYears}} Brandy Alexander. All rights reserved.</p>
     </div>
   </div>
 </div>

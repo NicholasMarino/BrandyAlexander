@@ -60,7 +60,7 @@ export class CalendarComponent implements OnInit {
       description: "New space! New sketches! Same old Brandy bringing you one hell of a show!",
     },
     {
-      title: "Brandy Alexander Presents",
+      title: "Brandy Alexander Presents A NEW SHOW",
       address: this.PLAYGROUND_THEATER_ADDRESS,
       image: undefined,
       ticketLink: undefined,

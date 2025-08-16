@@ -25,7 +25,7 @@ export class CalendarComponent implements OnInit {
 
   // Create very common venue addresses as constants so we can reuse them
   BUGHOUSE_ADDRESS: Address = {
-    name: 'Bughouse Theater',
+    name: 'BugHOOOUSESE Theater',
     line1: "1910 W. Irving Park Rd",
     line2: undefined,
     city: "Chicago",
